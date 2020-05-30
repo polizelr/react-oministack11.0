@@ -1,13 +1,33 @@
 const express = require('express');
 
+const OngController = require('./controllers/OngController');
+
 const routes = express.Router();
 
-routes.get('/', (req, res) => {
-    return res.json({
-        evento: 'Semana OmniStack 11.0',
-        aluna: 'Rafaela Polizel'
-    });
-});
+routes.post('/ongs', OngController.create);
+routes.get('/ongs', OngController.index);
 
 
 module.exports = routes;
+
+/* 
+    Entities
+        - ONG
+        - Incident
+
+    Functionalities
+        - ONG:
+            - ONG register
+            - Login
+            - Logout
+            - Incident register
+            - Delete incident
+            - List ong incidents
+            - List all incidents
+            - Get in touch
+
+    Knex: migrations
+
+        npx knex migrate:make migration_name
+        npx knex migrate:latest
+*/
